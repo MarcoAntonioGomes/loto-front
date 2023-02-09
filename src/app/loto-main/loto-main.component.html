@@ -1,1 +1,93 @@
-<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu> <br /><br />
+<p-fieldset legend="Loto Geração de Dezenas">
+  <div class="field col-12 md:col-3">
+    <label for="minmax">Quantidade de números:</label>
+    <p>
+      &ensp;
+      <p-inputNumber
+        [(ngModel)]="value4"
+        inputId="minmax"
+        inputId="minmax"
+        mode="decimal"
+        (onInput)="regerarInputsDezenas($event.value)"
+        [min]="7"
+        [max]="100"
+        [showButtons]="true"
+      >
+      </p-inputNumber>
+    </p>
+  </div>
+  <form [formGroup]="numberForm">
+    <div *ngFor="let item of indexes">
+      <div class="field col-12 md:col-3">
+        <label for="dezenas">Dezena Nº:{{ item }}</label>
+        <p>
+          &ensp;
+          <p-inputNumber
+            formControlName="dezena-{{ item }}"
+            inputId="dezenas"
+            inputId="dezenas"
+            mode="decimal"
+            [min]="1"
+            [max]="60"
+            [required]="true"
+          >
+          </p-inputNumber>
+        </p>
+      </div>
+    </div>
+  </form>
+  <br />
+  <p-button
+    style="float: right; padding-right: 30px"
+    icon="pi pi-check"
+    label="GERAR"
+    class="p-button-lg"
+    (onClick)="gerar()"
+  ></p-button>
+</p-fieldset>
+
+<p-dialog
+  header="ERRO"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p class="m-0">
+    Há números sem preenchimento! Favor informar todas as dezenas para efetuar a
+    geração.
+  </p>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="displayModal = false"
+      label="OK"
+      class="p-button-text"
+    ></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog
+  header="ERRO"
+  [(visible)]="existemNumerosRepetidosModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <p class="m-0">
+    Há números repetidos! Favor informar todas as dezenas sem repetição!
+  </p>
+  <ng-template pTemplate="footer">
+    <p-button
+      icon="pi pi-check"
+      (click)="existemNumerosRepetidosModal = false"
+      label="OK"
+      class="p-button-text"
+    ></p-button>
+  </ng-template>
+</p-dialog>

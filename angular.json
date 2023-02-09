@@ -30,7 +30,7 @@
             "styles": [
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/themes/md-dark-indigo/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": []
@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "loto-front"
+  "cli": {
+    "analytics": "82239a10-cabe-4c42-84a2-e102fbe68e50"
+  }
 }
