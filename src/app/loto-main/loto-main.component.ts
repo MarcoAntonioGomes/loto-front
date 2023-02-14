@@ -46,7 +46,7 @@ export class LotoMainComponent implements OnInit {
         new FormControl(undefined, [
           Validators.required,
           Validators.min(1),
-          Validators.max(60),
+          Validators.max(80),
         ])
       );
     }

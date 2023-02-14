@@ -26,12 +26,14 @@ export class LotoService extends SimpleService {
       null,
       httpOptions
     ).subscribe((res) => {
-      console.log(res);
       const blob = new Blob([res], {
         type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       });
       const url = window.URL.createObjectURL(blob);
-      window.open(url);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'loto.xlsx';
+      link.click();
     });
   }
 }
